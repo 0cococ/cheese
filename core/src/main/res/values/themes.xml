@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Cheese" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="Theme.Cheese" parent="Base.Theme.Cheese">
+        <!-- 指定按钮样式为 Material Design 风格 -->
+        <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
+    </style>
+
+    <style name="Theme.MaterialComponents.Light" parent="Base.Theme.MaterialComponents.Light"/>
+</resources>

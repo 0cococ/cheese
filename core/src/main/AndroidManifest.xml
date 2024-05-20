@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 允许程序访问网络状态信息 -->
+
+<!--    <uses-permission android:name="android.permission.CAMERA" />-->
+<!--    &lt;!&ndash; 允许程序访问相机 &ndash;&gt;-->
+
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
+    <!-- 允许程序访问root -->
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 允许程序访问 Wi-Fi 网络状态信息 -->
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 允许程序读取手机状态和身份 -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 允许程序写入外部存储，如 SD 卡 -->
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 允许程序读取外部存储，如 SD 卡 -->
+
+    <permission
+        android:name="com.android.permission.GET_INSTALLED_APPS"
+        android:protectionLevel="dangerous" />
+    <!-- 获取已安装应用的权限 -->
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <!-- 用于声明应用程序是否需要电话功能 -->
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <!-- 允许程序调度精确闹钟 -->
+
+    <uses-permission android:name="com.android.permission.GET_INSTALLED_APPS"/>
+    <!-- 获取已安装应用的权限 -->
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <!-- 允许程序查询所有包 -->
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 允许程序录音 -->
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 允许程序显示系统级警报窗口 -->
+
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <!-- 请求忽略电池优化 -->
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <!-- 允许程序将服务作为前台服务 -->
+
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序读取帧缓冲区 -->
+
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序修改电话状态 -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <!-- 允许程序写入外部存储 -->
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <!-- 允许程序查询所有包 -->
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 允许程序显示系统警报窗口 -->
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- 允许程序在设备启动后自动启动 -->
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序写入系统设置 -->
+
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序写入安全设置 -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 允许程序访问精确位置信息 -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 允许程序访问大致位置信息 -->
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 允许程序访问互联网 -->
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 允许程序改变 Wi-Fi 连接状态 -->
+
+    <uses-permission android:name="android.permission.BIND_INPUT_METHOD"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序绑定输入法 -->
+
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序读取特权电话状态 -->
+
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <!-- 允许程序管理外部存储 -->
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 允许程序控制手机震动 -->
+
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+    <!-- 允许程序访问通知策略 -->
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <!-- 允许程序禁用键盘锁 -->
+
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
+    <!-- 允许程序请求删除包 -->
+
+    <uses-permission android:name="android.permission.DELETE_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许程序删除包 -->
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 允许读取系统日志的 -->
+
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:ignore="ExtraText">
+        <service
+            android:name=".aidl.Service"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":run">
+        </service>
+        <service
+            android:name=".service.AccessibilityService"
+            android:description="@string/base_ser_desc"
+            android:label="cheese"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config" />
+        </service>
+        <service android:name=".service.MyInputMethodService"
+            android:label="@string/input_name"
+            android:permission="android.permission.BIND_INPUT_METHOD"
+            android:exported="true"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection"
+            android:windowSoftInputMode="stateAlwaysVisible">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data android:name="android.view.im" android:resource="@xml/method"/>
+        </service>
+        <service android:name=".service.ForegroundService" />
+
+
+        <activity
+            android:name=".activity.StubActivity$Keep"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P0"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P1"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P2"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P3"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P4"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P5"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+
+        <activity
+            android:name=".activity.StubActivity$P6"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P7"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P8"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+        <activity
+            android:name=".activity.StubActivity$P9"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":run">
+        </activity>
+
+    </application>
+
+
+</manifest>

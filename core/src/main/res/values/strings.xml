@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cheese</string>
+    <string name="accessibility_service_label">我的无障碍服务</string>
+    <string name="description">Test</string>
+    <string name="fore_service">前台服务</string>
+    <string name="base_ser_desc">Cheese-自动化测试框架</string>
+    <string name="input_name">Cheese输入法</string>
+    <string name="subtype_en_US">中国</string>
+    <string name="black_box_service_name">:black</string>
+</resources>
