@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             }
         PermissionsUtils.get().requestAllPermissions { ->
             XLog.d("MainActivity", "onCreate: 权限申请完成")
+            Toaster.show("SDK v0.0.3")
             val s = ServiceManager()
             s.Bind(true)
         }
