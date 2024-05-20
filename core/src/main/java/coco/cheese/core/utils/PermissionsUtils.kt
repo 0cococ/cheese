@@ -33,6 +33,7 @@ class PermissionsUtils(private val env: Env) {
             ACCESSIBILITY -> requestAccessibilityPermission(timeout)
             FLOAT -> requestFloatPermission(timeout)
             RECORDSCREEN -> requestRecordScreenPermission(timeout)
+            ROOT ->requestRootPermission(timeout)
             else -> false
         }
     }
