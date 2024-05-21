@@ -10,6 +10,7 @@ import coco.cheese.core.callback.IJS
 import coco.cheese.core.engine.javet.ConsoleLogger
 import coco.cheese.core.interfaces.IBase
 import coco.cheese.core.interfaces.JAction
+import coco.cheese.core.pylog
 import coco.cheese.core.runOnUi
 import coco.cheese.core.utils.ui.XmlUtils
 import com.hjq.toast.Toaster
@@ -27,6 +28,12 @@ class BaseUtils(private val env: Env) {
     fun toast(message: String) {
         ConsoleLogger.i(message)
         runOnUi { Toaster.show(message) }
+    }
+
+    fun pythonLog(){
+        Thread{
+            pylog()
+        }.start()
     }
 
     fun toast(format: String, vararg objects: Any) {

@@ -40,9 +40,9 @@ open class App : Application() {
             modules(appModule)
             androidContext(this@App)
         }
-//        coco.mirror.core.Env.get().context=this
 //        Env.get().context = ContextThemeWrapper(this, R.style.Theme)
         Env.get().context=this
+        coco.mirror.core.Env.get().context = this
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(Intent(this, ForegroundService::class.java))
         } else {
@@ -75,6 +75,6 @@ open class App : Application() {
 
     private val appModule = module {
         single { Env() }
-//        single { coco.mirror.core.Env() }
+        single { coco.mirror.core.Env() }
     }
 }

@@ -16,6 +16,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+    sourceSets {
+        named("main") {
+            jniLibs.srcDirs("jniLibs")
+        }
+    }
 
     buildTypes {
         release {

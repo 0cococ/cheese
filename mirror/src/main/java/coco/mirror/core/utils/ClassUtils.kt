@@ -34,8 +34,8 @@ class ClassUtils(private val env: Env) {
         return this
     }
 
-    fun getMethod(name: String, vararg args: Any?): ClassUtils {
-        method = clz.getMethod(name, *args.toJavaClasses())
+    fun getMethod(name: String, vararg args: Class<*>): ClassUtils {
+        method = clz.getMethod(name, *args)
         method.isAccessible = true
         return this
     }

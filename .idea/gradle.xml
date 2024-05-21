@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/depend" />
             <option value="$PROJECT_DIR$/mirror" />
             <option value="$PROJECT_DIR$/opencv" />
+            <option value="$PROJECT_DIR$/python" />
             <option value="$PROJECT_DIR$/yolo" />
           </set>
         </option>

@@ -34,3 +34,5 @@ include(":yolo")
 include(":app-debug")
 include(":app-release")
 include(":mirror")
+
+include(":python")

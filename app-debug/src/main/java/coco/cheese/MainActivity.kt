@@ -15,11 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import coco.cheese.bottomnav.BottomNav
 import coco.cheese.core.Env
+import coco.cheese.core.engine.javet.ConsoleLogger
 import coco.cheese.core.utils.PermissionsUtils
-
 import coco.cheese.ui.theme.CheeseTheme
 import com.elvishew.xlog.XLog
 import com.hjq.toast.Toaster
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 import kotlin.collections.set
 
 
@@ -46,13 +49,10 @@ class MainActivity : ComponentActivity() {
             }
         PermissionsUtils.get().requestAllPermissions { ->
             XLog.d("MainActivity", "onCreate: 权限申请完成")
-            Toaster.show("SDK v0.0.3")
+            Toaster.show("SDK v0.0.4")
+
         }
     }
-
-
-
-
 
 }
 

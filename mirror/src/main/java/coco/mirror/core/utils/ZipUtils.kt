@@ -2,10 +2,6 @@ package coco.mirror.core.utils
 
 import coco.mirror.core.Env
 import coco.mirror.core.interfaces.IBase
-import net.lingala.zip4j.core.ZipFile
-import net.lingala.zip4j.exception.ZipException
-import net.lingala.zip4j.model.ZipParameters
-import net.lingala.zip4j.util.Zip4jConstants
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException

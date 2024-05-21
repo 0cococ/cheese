@@ -59,6 +59,23 @@ class BaseApi(private val env: Env): IEngineBase {
     }
 
     @V8Function
+    fun pythonLogAsync(): V8ValuePromise {
+        val v8ValuePromiseResolver = nodeRuntime.createV8ValuePromise()
+        val task: Promise.Task =
+            Promise.Task(v8ValuePromiseResolver, "", System.currentTimeMillis())
+        executorService.submit {
+            Promise(nodeRuntime, task,
+                env.invoke<BaseUtils>().pythonLog()
+            )
+        }
+        return v8ValuePromiseResolver.promise
+    }
+    @V8Function
+    fun pythonLog() {
+        env.invoke<BaseUtils>().pythonLog()
+    }
+
+    @V8Function
     fun toastAsync(format: String, vararg objects: Any): V8ValuePromise {
         val v8ValuePromiseResolver = nodeRuntime.createV8ValuePromise()
         val task: Promise.Task =

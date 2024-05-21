@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
 import android.util.Pair
+import coco.cheese.core.engine.javet.ConsoleLogger
 import coco.cheese.core.engine.javet.node
 import coco.cheese.core.utils.DeviceUtils
 import coco.cheese.core.utils.FilesUtils
@@ -16,11 +17,15 @@ import com.yanzhenjie.andserver.annotation.RequestParam
 import com.yanzhenjie.andserver.annotation.RestController
 import kotlinx.coroutines.*
 import java.io.BufferedReader
+import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -32,6 +37,58 @@ import kotlin.coroutines.EmptyCoroutineContext
  * Created on 2020/6/11
  * @author Vove
  */
+
+
+
+
+private const val TAG = "python.stdout" // 替换为你感兴趣的标签
+private val logList = mutableListOf<String>()
+@Throws(IOException::class)
+private fun createLogcatBufferedReader(): BufferedReader {
+    // 构建 logcat 命令，过滤指定标签的日志
+    Runtime.getRuntime().exec("logcat -c").waitFor()
+    val command = "logcat -v threadtime $TAG:D *:S"
+    // 执行 logcat 命令
+    val process = Runtime.getRuntime().exec(command)
+    // 返回 BufferedReader 对象
+    return BufferedReader(InputStreamReader(process.inputStream))
+}
+
+fun pylog() {
+    val currentTime = Calendar.getInstance().time
+    val calendar = Calendar.getInstance()
+    val currentYear = calendar.get(Calendar.YEAR)
+    var reader: BufferedReader? = null
+    try {
+        reader = createLogcatBufferedReader()
+        var line: String?
+        while (reader.readLine().also { line = it } != null) {
+            val log = line.toString()
+            // 检查日志是否已经存在于列表中
+
+            if (!logList.contains(log)&&!log.contains("beginning")) {
+                logList.add(log)
+                val newLog="$currentYear-$log"
+
+                val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault())
+                val targetTime = sdf.parse(newLog)
+                XLog.e(currentTime)
+                XLog.e(targetTime)
+                 if(targetTime!!.after(currentTime)) {
+                   ConsoleLogger.i(newLog.split("python.stdout: ").last())
+                 }
+
+            }
+        }
+    } catch (e: IOException) {
+        e.printStackTrace()
+    } finally {
+        reader?.close()
+    }
+}
+
+
+
 @RestController
 class WorkerServer {
     @GetMapping("/create")
