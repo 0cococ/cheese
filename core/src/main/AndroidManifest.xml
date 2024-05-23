@@ -164,7 +164,7 @@
             </intent-filter>
             <meta-data android:name="android.view.im" android:resource="@xml/method"/>
         </service>
-        <service android:name=".service.ForegroundService" />
+        <service android:name=".service.ForegroundService"   android:foregroundServiceType="mediaProjection"/>
 
 
         <activity

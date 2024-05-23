@@ -29,6 +29,49 @@ android {
 //            abiFilters.addAll(listOf( "armeabi-v7a"))
             abiFilters.addAll(listOf("x86_64", "x86","arm64-v8a", "armeabi-v7a"))
         }
+//        applicationVariants.all {
+//            val flavorName = this.flavorName
+//            this.outputs
+//                .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
+//                .forEach { output ->
+//                    val versionName = "0.0.4"
+//                    val outputFileName = "${flavorName}-${versionName}.apk"
+//                    println("OutputFileName: $outputFileName")
+//                    output.outputFileName = outputFileName
+//                }
+//        }
+//        flavorDimensions("abi")
+//        productFlavors {
+//            create("all") {
+//                dimension = "abi"
+//                ndk{
+//                    abiFilters.clear()
+//                    abiFilters.addAll(listOf("x86_64", "x86","arm64-v8a", "armeabi-v7a"))
+//                }
+//            }
+//            create("x86_64") {
+//                dimension = "abi"
+//                ndk{
+//                    abiFilters.clear()
+//                    abiFilters.add("x86_64")
+//                }
+//            }
+//            create("x86") {
+//                dimension = "abi"
+//                ndk.abiFilters.clear()
+//                ndk.abiFilters.add("x86")
+//            }
+//            create("arm64-v8a") {
+//                dimension = "abi"
+//                ndk.abiFilters.clear()
+//                ndk.abiFilters.add("arm64-v8a")
+//            }
+//            create("armeabi-v7a") {
+//                dimension = "abi"
+//                ndk.abiFilters.clear()
+//                ndk.abiFilters.add("armeabi-v7a")
+//            }
+//        }
     }
 
     buildTypes {

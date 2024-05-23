@@ -101,7 +101,6 @@ class ServiceManager {
         if (guard) {
             XLog.i("开启运行进程守护")
         }
-
         connectToService(guard)
         if (isConnected && isBind) {
             XLog.i("已启动运行进程")

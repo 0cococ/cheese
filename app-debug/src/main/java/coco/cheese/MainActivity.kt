@@ -50,7 +50,6 @@ class MainActivity : ComponentActivity() {
         PermissionsUtils.get().requestAllPermissions { ->
             XLog.d("MainActivity", "onCreate: 权限申请完成")
             Toaster.show("SDK v0.0.4")
-
         }
     }
 
